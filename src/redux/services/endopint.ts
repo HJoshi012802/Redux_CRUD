@@ -10,7 +10,7 @@ export const apiEndpoint =createApi({
                 return{
                     url:"user",
                     method:'POST',
-                    body:newUser,
+                    body:{newUser},
                 }
             }
         })

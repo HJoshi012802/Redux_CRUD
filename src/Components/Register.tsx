@@ -1,6 +1,7 @@
-
+import {useRegisterUserMutation} from '../redux/services/endopint';
 
 export const Register:React.FC =()=>{
+
     return(
         <div className="w-full max-w-xs mx-auto mt-10">
         <form className="bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-2">
