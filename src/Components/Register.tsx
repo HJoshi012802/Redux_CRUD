@@ -1,6 +1,12 @@
 import {useRegisterUserMutation} from '../redux/services/endopint';
 
 export const Register:React.FC =()=>{
+  const [createUser,{isLoading}]=useRegisterUserMutation();
+
+  function submitUser(event:React.FormEvent<HTMLFormElement>){
+    event.preventDefault();
+    createUser(event.target.value)
+  }
 
     return(
         <div className="w-full max-w-xs mx-auto mt-10">
