@@ -4,7 +4,7 @@ export const Header:React.FC =()=>{
     return(
         <main className="text-center bg-gray- rounded shadow-xl">
         <header className="flex justify-between  py-6 mx-12 mb-10 font-xl ">
-       <Link to="/" className="font-roboto font-bold text text-5xl bg-black  bg-clip-text p-2">Test</Link>
+       <Link to="/" className="font-roboto font-bold text text-xl bg-black  bg-clip-text p-2">75way Technologies</Link>
        
        <nav className='flex gap-3  items-center'>
          {/* {username &&(

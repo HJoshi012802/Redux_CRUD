@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "Redux_CRUD",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
