@@ -3,6 +3,8 @@ import {Route, Routes} from "react-router-dom";
 import {Home}from './Components/Home';
 import {Register} from './Components/Register';
 import {Login} from './Components/Login';
+import { Job } from "./Components/Job";
+import {CreateIntrest} from './Components/CreateIntrest';
 import { Navbar } from "./Components/Navbar";
 import { useAppDispatch } from "./redux/services/Hooks";
 import { setUser } from './redux/services/authSlice';
@@ -14,16 +16,17 @@ function App() {
   const user =JSON.parse(localStorage.getItem('user')||"{}");
 
   useEffect(()=>{
- dispatch(setUser(user))
+  dispatch(setUser(user))
   },[])
+
   return (
    <Routes>
-    
     <Route path='/' element={<Navbar/>}>
       <Route index element={<Home/>}/>
       <Route path='login' element={<Login/>}/>
       <Route path='register' element={<Register/>}/>
-     
+      <Route path='intrest' element={<CreateIntrest/>}/>
+      <Route path='jobs' element={<Job/>}/>
     </Route>
     </Routes>
   );

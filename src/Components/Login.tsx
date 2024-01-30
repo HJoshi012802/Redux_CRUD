@@ -14,7 +14,7 @@ interface LogUser{
 export const Login:React.FC =()=>{
   const [email,setEmail] =useState<string>("");
   const [password,setPassword]=useState<string>("");
-  const [login,{data,isSuccess,isError,error}]=useSigninUserMutation();
+  const [login,{data,isSuccess,isError,error,}]=useSigninUserMutation();
   
   const dispatch =useAppDispatch();
 
@@ -30,6 +30,7 @@ export const Login:React.FC =()=>{
    try{
     const valid = await userLogin.validate(you);
     await login({email,password});
+
    }catch(err){
     window.alert(err);
    }
@@ -38,12 +39,16 @@ export const Login:React.FC =()=>{
 
   useEffect(()=>{
     if(isSuccess){
+      console.log(data)
       window.alert(`${data.name} Welcome`);
       dispatch(setUser({name:data.name, authToken:data.authToken, refreshToken:data.refreshToken}));
       console.log(data);
       navigate("/")
     }
-  },[isSuccess])
+    if(isError){
+      window.alert(`Error Login`);
+    }
+  },[isSuccess,isError])
 
 
     return(

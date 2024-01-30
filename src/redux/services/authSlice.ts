@@ -1,18 +1,19 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
+import { json } from "stream/consumers";
 
 export interface AuthState{
     name:string | null;
     authToken:string | null;
     refreshToken:string |null;
 }
-
+const data = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")!): {};
 const authSlice =createSlice({
     name:"auth",
     initialState:{
         name:null,
-        authToken:null,
-        refreshToken:null,
+        authToken:data.authToken,
+        refreshToken:data.refreshToken,
     } as AuthState,
     reducers:{
       setUser:(state,action:PayloadAction<{name:string; authToken:string; refreshToken:string}>)=>{
@@ -36,16 +37,14 @@ const authSlice =createSlice({
   })
   
   
-  export const selectAuth =(state:RootState) =>state.auth;
+  export const selectAuth =(state:RootState) =>state.auth; 
   export const {setUser,logout} =authSlice.actions;
-  
-  // export const {setCredentials,logOut} =authSlice.actions
-  
+
   export default authSlice.reducer;
   
-  // export const selectCurrentUser = (state:any) => state.auth.name;
-  // export const selectCurrentauth = (state:any) => state.auth.authToken;
-  // export const selectCurrentrefresh = (state:any) => state.auth.refreshToken;
+  export const selectCurrentUser = (state:any) => state.auth.name;
+  export const selectCurrentauth = (state:any) => state.auth.authToken;
+  export const selectCurrentrefresh = (state:any) => state.auth.refreshToken;
   
 
 
